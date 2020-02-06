@@ -31,6 +31,13 @@ class LinkController extends Controller {
             'custom-ending' => 'alpha_dash'
         ]);
 
+        // Restringe as urls que podem ser inputadas
+        $host = parse_url( $request->input('link-url'), PHP_URL_HOST);
+        if( !(strpos($host, 'petrobras.com.br') !== false)) {
+
+            return self::renderError( 'Não é permitido encurtar URLs externas');
+        }
+
         $long_url = $request->input('link-url');
         $custom_ending = $request->input('custom-ending');
         $is_secret = ($request->input('options') == "s" ? true : false);
