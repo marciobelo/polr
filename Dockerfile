@@ -29,5 +29,4 @@ RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
 
 EXPOSE 80
 
-# isso é necessário?
-# CMD ["/usr/sbin/init"]
+CMD ["/usr/sbin/init"]
