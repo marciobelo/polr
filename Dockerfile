@@ -30,8 +30,7 @@ RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
 
 # Install MariaDB
 COPY MariaDB.repo /etc/yum.repos.d/MariaDB.repo
-#RUN yum clean all;yum -y install mariadb-server mariadb-client
-RUN yum clean all;yum -y install mariadb-server
+RUN yum clean all;yum -y install mariadb-server mariadb-client
 VOLUME /var/lib/mysql
 EXPOSE 3306
 
