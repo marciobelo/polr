@@ -1,3 +1,4 @@
+# retirado de https://github.com/andrewklau/docker-centos-lamp/blob/master/Dockerfile
 FROM centos:centos7
 RUN yum -y install curl wget unzip git vim nano \
 iproute python-setuptools hostname inotify-tools yum-utils which \
@@ -26,6 +27,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # UTC Timezone & Networking
 RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
 	&& echo "NETWORKING=yes" > /etc/sysconfig/network
+
+# Install MariaDB
+COPY MariaDB.repo /etc/yum.repos.d/MariaDB.repo
+#RUN yum clean all;yum -y install mariadb-server mariadb-client
+RUN yum clean all;yum -y install mariadb-server
+VOLUME /var/lib/mysql
+EXPOSE 3306
 
 EXPOSE 80
 
