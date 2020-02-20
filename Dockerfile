@@ -1,5 +1,7 @@
 # retirado de https://github.com/andrewklau/docker-centos-lamp/blob/master/Dockerfile
 FROM centos:centos7
+
+# Install varioius utilities
 RUN yum -y install curl wget unzip git vim nano \
 iproute python-setuptools hostname inotify-tools yum-utils which \
 epel-release
@@ -24,10 +26,6 @@ RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/httpd/conf/httpd.conf
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# UTC Timezone & Networking
-RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
-	&& echo "NETWORKING=yes" > /etc/sysconfig/network
-
 # Install MariaDB
 COPY MariaDB.repo /etc/yum.repos.d/MariaDB.repo
 RUN yum clean all;yum -y install mariadb-server mariadb-client
@@ -40,6 +38,10 @@ RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - \
 && npm install -g npm \
 && npm install -g gulp grunt-cli \
 && yum clean all
+
+# UTC Timezone & Networking
+RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
+	&& echo "NETWORKING=yes" > /etc/sysconfig/network
 
 COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 80
