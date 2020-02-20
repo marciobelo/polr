@@ -47,6 +47,15 @@ RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - \
 RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
 	&& echo "NETWORKING=yes" > /etc/sysconfig/network
 
+# Copia os arquivos necessários ao deploy do projeto
+COPY app /var/www
+COPY config /var/www
+COPY database /var/www
+COPY docs /var/www
+COPY resources /var/www
+COPY storage /var/www
+COPY public /var/www/html
+
 COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 80
 CMD ["/usr/bin/supervisord"]
