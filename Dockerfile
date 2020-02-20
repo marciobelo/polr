@@ -34,6 +34,6 @@ RUN yum clean all;yum -y install mariadb-server mariadb-client
 VOLUME /var/lib/mysql
 EXPOSE 3306
 
+COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 80
-
-CMD mysqld && /usr/sbin/init
+CMD ["/usr/bin/supervisord"]
