@@ -36,4 +36,4 @@ EXPOSE 3306
 
 EXPOSE 80
 
-CMD  /etc/init.d/mysql start && /usr/sbin/init
+CMD mysqld && /usr/sbin/init
