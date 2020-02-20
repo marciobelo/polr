@@ -32,6 +32,10 @@ RUN yum clean all;yum -y install mariadb-server mariadb-client
 VOLUME /var/lib/mysql
 EXPOSE 3306
 
+# Install Redis
+RUN yum -y install redis;
+EXPOSE 3000
+
 # Setup NodeJS
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - \
 && yum -y install nodejs gcc-c++ make \
