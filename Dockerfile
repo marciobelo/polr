@@ -34,6 +34,13 @@ RUN yum clean all;yum -y install mariadb-server mariadb-client
 VOLUME /var/lib/mysql
 EXPOSE 3306
 
+# Setup NodeJS
+RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - \
+&& yum -y install nodejs gcc-c++ make \
+&& npm install -g npm \
+&& npm install -g gulp grunt-cli \
+&& yum clean all
+
 COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 80
 CMD ["/usr/bin/supervisord"]
