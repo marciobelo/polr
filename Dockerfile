@@ -68,10 +68,10 @@ WORKDIR /var/www
 RUN composer install
 
 COPY supervisord.conf /etc/supervisord.conf
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+#COPY start.sh /start.sh
+#RUN chmod +x /start.sh
 
 EXPOSE 80
-#CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord"]
 
-ENTRYPOINT /start.sh
+#ENTRYPOINT /start.sh
