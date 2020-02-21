@@ -61,6 +61,12 @@ COPY composer.lock /var/www
 COPY public/ /var/www/html
 COPY .env.prd /var/www/.env
 
+RUN chmod o+rw -R /var/www/storage
+
+# cria o banco de dados do polr
+RUN mysql -u root < echo "create database polr;"
+
+# baixa as dependências do polr
 WORKDIR /var/www
 RUN composer install
 
