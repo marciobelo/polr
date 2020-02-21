@@ -48,12 +48,12 @@ RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime \
 	&& echo "NETWORKING=yes" > /etc/sysconfig/network
 
 # Copia os arquivos necessários ao deploy do projeto
-COPY app/ /var/www
-COPY config/ /var/www
-COPY database/ /var/www
-COPY docs/ /var/www
-COPY resources/ /var/www
-COPY storage/ /var/www
+COPY app/ /var/www/app
+COPY config/ /var/www/config
+COPY database/ /var/www/database
+COPY docs/ /var/www/docs
+COPY resources/ /var/www/resources
+COPY storage/ /var/www/storage
 COPY public/ /var/www/html
 
 COPY supervisord.conf /etc/supervisord.conf
