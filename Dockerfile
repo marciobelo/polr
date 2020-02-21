@@ -55,6 +55,7 @@ COPY docs/ /var/www/docs
 COPY resources/ /var/www/resources
 COPY storage/ /var/www/storage
 COPY bootstrap/ /var/www/bootstrap
+COPY tests/ /var/www/tests
 COPY composer.json /var/www
 COPY composer.lock /var/www
 COPY public/ /var/www/html
