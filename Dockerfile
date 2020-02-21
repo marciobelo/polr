@@ -64,7 +64,7 @@ COPY .env.prd /var/www/.env
 RUN chmod o+rw -R /var/www/storage
 
 # cria o banco de dados do polr
-RUN mysql -u root < echo "create database polr;"
+RUN echo "create database polr;" | mysql -u root
 
 # baixa as dependências do polr
 WORKDIR /var/www
