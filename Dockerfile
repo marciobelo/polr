@@ -54,7 +54,13 @@ COPY database/ /var/www/database
 COPY docs/ /var/www/docs
 COPY resources/ /var/www/resources
 COPY storage/ /var/www/storage
+COPY bootstrap/ /var/www/bootstrap
+COPY composer.json /var/www
+COPY composer.lock /var/www
 COPY public/ /var/www/html
+
+WORKDIR /var/www
+RUN composer
 
 COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 80
