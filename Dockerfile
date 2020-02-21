@@ -59,6 +59,7 @@ COPY tests/ /var/www/tests
 COPY composer.json /var/www
 COPY composer.lock /var/www
 COPY public/ /var/www/html
+COPY .env.prd /var/www/.env
 
 WORKDIR /var/www
 RUN composer install
