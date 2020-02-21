@@ -68,6 +68,8 @@ WORKDIR /var/www
 RUN composer install
 
 COPY supervisord.conf /etc/supervisord.conf
+COPY start.sh /start.sh
 EXPOSE 80
 #CMD ["/usr/bin/supervisord"]
-CMD /usr/bin/supervisord && echo "create database polr;" | mysql -u root
+
+ENTRYPOINT /start.sh
