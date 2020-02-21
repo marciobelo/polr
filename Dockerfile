@@ -60,7 +60,7 @@ COPY composer.lock /var/www
 COPY public/ /var/www/html
 
 WORKDIR /var/www
-RUN composer
+RUN composer install
 
 COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 80
