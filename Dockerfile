@@ -63,13 +63,11 @@ COPY .env.prd /var/www/.env
 
 RUN chmod o+rw -R /var/www/storage
 
-# cria o banco de dados do polr
-RUN echo "create database polr;" | mysql -u root
-
 # baixa as dependências do polr
 WORKDIR /var/www
 RUN composer install
 
 COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 80
-CMD ["/usr/bin/supervisord"]
+#CMD ["/usr/bin/supervisord"]
+CMD /usr/bin/supervisord && echo "create database polr;" | mysql -u root
