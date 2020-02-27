@@ -60,6 +60,7 @@ COPY composer.json /var/www
 COPY composer.lock /var/www
 COPY public/ /var/www/html
 COPY .env.prd /var/www/.env
+COPY artisan /var/www/
 
 RUN chmod o+rw -R /var/www/storage
 
